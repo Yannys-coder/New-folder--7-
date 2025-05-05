@@ -21,3 +21,16 @@ def verify():
     msg.body = (mail)
     mail.send(msg)
     return render_template('page.html')
+@app.route('/validate', methods=["POST"])
+def validate():
+    user_otp = request.form["otp"]
+    if mail == int(user_otp):
+        return "<h4>Email verification successful</h4>"
+    else:
+        return "<h4>VERIFICATION FAILED</h4>"
+    
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+app.run(host='0.0.0.0', port=8080, debug=True)
